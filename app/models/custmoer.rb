@@ -1,2 +1,0 @@
-class Custmoer < ApplicationRecord
-end
