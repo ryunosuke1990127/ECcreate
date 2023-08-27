@@ -12,7 +12,7 @@
   <header>
     <!--管理者用のヘッダー-->
     <% if customer_signed_in? %>
-      <li>><%= link_to "マイページ",public_user_path(current_customer.id) %></li>
+      <li>><%= link_to "マイページ",public_custmoers_show_path(current_customer.id) %></li>
       <li><%= link_to "商品一覧"%></li>
       <li><%= link_to "カート"%></li>
       <li><%= link_to "ログアウト",destroy_admin_session_path, method: :delete%></li>

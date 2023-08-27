@@ -1,10 +1,11 @@
-class Public::UsersController < ApplicationController
+class Public::CustmoersController < ApplicationController
 
   # ユーザー編集ページが押されたときの処理
   def edit
     @user = Customer.find(params[:id])
   end
 
+  # ユーザー編集ボタンが押されたときの処理
   def update
     @user = Customer.find(params[:id])
     @user.update(user_params)
@@ -14,6 +15,16 @@ class Public::UsersController < ApplicationController
   # ユーザーのマイページが押されたときの処理へ
   def show
     @user = Customer.find(params[:id])
+  end
+
+  # 退会処理確認画面
+  def withdraw_check
+    # クリックしたユーザー情報の取得
+    @user = Customer.find(params[:id])
+  end
+
+  # 退会処理
+  def withdraw
   end
 
 

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+
   namespace :public do
-    resources :users, only: [:show, :edit,:update]
+    get '/custmoers/show' =>'custmoers#show'
+    get '/custmoers/infomation/edit' =>'custmoers#edit'
+    patch '/custmoers/infomation' =>'custmoers#update'
+    get '/custmoers/withdraw_check' =>'custmoers#withdraw_check'
+    patch  '/custmoers/withdraw' =>'custmoers#withdraw'
   end
 
   # 顧客用

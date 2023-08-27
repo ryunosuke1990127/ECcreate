@@ -1,5 +1,5 @@
 <h1>会員情報編集</h1>
-<%= form_with model: @user, url: public_user_path, method: :PATCH do |f| %>
+<%= form_with model: @user, url: public_custmoers_infomation_path, method: :PATCH do |f| %>
 <div>氏名<%= f.text_field :first_name%> <%= f.text_field :last_name%></div>
 <div>フリガナ<%= f.text_field :first_name_kana%> <%= f.text_field :last_name_kana%></div>
 <div>郵便番号<%= f.text_field :postal_code%></div>
@@ -8,5 +8,7 @@
 <div>メールアドレス<%= f.text_field :email%></div>
 <p><%= f.submit "編集内容を保存" %></p>
 <% end %>
+
+<%=link_to "退会する",public_delete_path %>
 
 </div>
