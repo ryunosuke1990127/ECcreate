@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get '/custmoers/show' =>'custmoers#show'
-    get '/custmoers/infomation/edit' =>'custmoers#edit'
-    patch '/custmoers/infomation' =>'custmoers#update'
-    get '/custmoers/withdraw_check' =>'custmoers#withdraw_check'
-    patch  '/custmoers/withdraw' =>'custmoers#withdraw'
+  # 顧客のルーティング
+  scope module: :public do
+    root to: 'homes#top'
+    
+    get '/about' =>'homes#about'
+    get '/customers/show' =>'customers#show'
+    get '/customers/infomation/edit' =>'customers#edit'
+    patch '/customers/infomation' =>'customers#update'
+    get '/customers/withdraw_check' =>'customers#withdraw_check'
+    patch  '/customers/withdraw' =>'customers#withdraw'
   end
 
   # 顧客用
@@ -24,8 +28,5 @@ Rails.application.routes.draw do
    get '/' =>'homes#top'
   end
 
-  # 顧客のルーティング
-  get '/' =>'public/homes#top'
-
-
+  
 end

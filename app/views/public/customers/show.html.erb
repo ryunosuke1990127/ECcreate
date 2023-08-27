@@ -1,6 +1,6 @@
 <h1>マイページ</h1>
 <h2>登録情報</h2>
-<%=link_to "編集", public_custmoers_infomation_edit_path(@user.id) %>
+<%=link_to "編集", customers_infomation_edit_path(@user.id) %>
 <div>氏名　<%= @user.first_name %>　<%= @user.last_name%></div>
 <div>カナ　<%= @user.first_name_kana %>　<%= @user.last_name_kana%></div>
 <div>郵便番号　<%= @user.postal_code %></div>
