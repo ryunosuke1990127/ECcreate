@@ -9,5 +9,5 @@
 
 Admin.create!(
    email:'0kg4991w38w3v1e@ezweb.ne.jp',
-   password: 'h110127r'
+   password: 'H110127r'
 )

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # 顧客のルーティング
   scope module: :public do
     root to: 'homes#top'
-    
+
     get '/about' =>'homes#about'
     get '/customers/show' =>'customers#show'
     get '/customers/infomation/edit' =>'customers#edit'
@@ -25,8 +25,8 @@ Rails.application.routes.draw do
 
    # 管理者側のルーティング設定
    namespace :admin do
-   get '/' =>'homes#top'
+  resources:genres , only:[:create,:update,:edit,:index]
   end
 
-  
+
 end
