@@ -1,2 +1,27 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+
+ <body>
+   <main>
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto">
+          <h1>商品編集</h1>
+            <%= form_with model: @item ,url: admin_item_path, method: :PATCH do |f| %>
+            <div class="product">商品画像<%= f.file_field :image, accept: "image/*" %></div>
+            <div class="product">商品名<%= f.text_field :name%></div>
+            <div class="product">商品説明 <%= f.text_area :introduction%></div>
+            <div class="product">ジャンル<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></div>
+            <div class="product">税抜き価格<%= f.text_field :price%></div>
+            <%= f.submit "変更を保存" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

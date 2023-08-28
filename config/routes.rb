@@ -1,24 +1,5 @@
 Rails.application.routes.draw do
-
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-  end
-  # 顧客のルーティング
-  scope module: :public do
-    root to: 'homes#top'
-
-    get '/about' =>'homes#about'
-    get '/customers/show' =>'customers#show'
-    get '/customers/infomation/edit' =>'customers#edit'
-    patch '/customers/infomation' =>'customers#update'
-    get '/customers/withdraw_check' =>'customers#withdraw_check'
-    patch  '/customers/withdraw' =>'customers#withdraw'
-  end
-
-  # 顧客用
+    # 顧客用
   devise_for :customers, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -29,9 +10,24 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
    }
 
+  # 顧客のルーティング
+  scope module: :public do
+    root to: 'homes#top'
+
+    get '/about' =>'homes#about'
+    get '/customers/show' =>'customers#show'
+    get '/customers/infomation/edit' =>'customers#edit'
+    patch '/customers/infomation' =>'customers#update'
+    get '/customers/withdraw_check' =>'customers#withdraw_check'
+    patch  '/customers/withdraw' =>'customers#withdraw'
+
+    resources :items, only:[:index,:show]
+  end
+
    # 管理者側のルーティング設定
-   namespace :admin do
-  resources:genres , only:[:create,:update,:edit,:index]
+  namespace :admin do
+  resources :genres ,only:[:create,:update,:edit,:index]
+  resources :items , only:[:create,:update,:edit,:index,:new,:show]
   end
 
 
