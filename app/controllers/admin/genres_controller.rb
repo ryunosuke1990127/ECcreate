@@ -2,7 +2,6 @@ class Admin::GenresController < ApplicationController
 
   def index
     @genre = Genre.new
-
     # ジャンル一覧の表示
     @genres =Genre.all
   end
@@ -14,7 +13,15 @@ class Admin::GenresController < ApplicationController
 
   end
 
+  # 対象ジャンルの編集が押されたときの処理
   def edit
+    @genre= Genre.find(params[:id])
+  end
+
+  def update
+    @genre= Genre.find(params[:id])
+    @genre.update(genre_params)
+    redirect_to admin_genres_path
   end
 
 
