@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+
+ <body>
+   <main>
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto">
+          <h1><%=@customer.first_name%><%=@customer.last_name%>さんの会員詳細</h1>
+            <div class="customer">会員ID<%= @customer.id %></div>
+            <div class="customer">氏名<%= @customer.first_name%><%= @customer.last_name%></div>
+            <div class="customer">フリガナ<%= @customer.first_name_kana %><%= @customer.last_name_kana %></div>
+            <div class="customer">郵便番号<%= @customer.postal_code %></div>
+            <div class="customer">住所<%= @customer.address %></div>
+            <div class="customer">電話番号<%= @customer.telephone_number %></div>
+            <div class="customer">メールアドレス<%= @customer.email %></div>
+            <div class="customer">会員ステータス<%= @customer.is_deleted ? '有効' : '退会'%></div>
+            <div><%= link_to "編集",edit_admin_customer_path(@customer.id)%></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

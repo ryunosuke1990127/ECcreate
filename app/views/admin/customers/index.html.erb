@@ -1,0 +1,40 @@
+<h1>会員一覧</h1>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+
+ <body>
+   <div class="container">
+       <div class="row">
+        <div class="mx-auto">
+          <table class="table">
+            <!--テーブルヘッダ-->
+            <thead>
+              <tr>
+                <th>会員ID</th>
+                <th>氏名</th>
+                <th>メールアドレス</th>
+                <th>ステータス</th>
+              </tr>
+            </thead>
+            <!--テーブルの項目設定-->
+           <% @customers.each do |c| %>
+           <tbody>
+             <tr>
+               <td><div><%= c.id%></div></td>
+               <td><div><%= link_to admin_customer_path(c.id) do %><%=c.first_name%><%=c.last_name%><% end %></div></td>
+               <td><div><%= c.email%></div></td>
+               <td><div><%= c.is_deleted ? '有効' : '退会'%></div></td>
+               <% end %>
+             </tr>
+           </tbody>
+           </table>
+         </div>
+       </div>
+    </div>
+ </body>
+
+ </html>
