@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     patch  '/customers/withdraw' =>'customers#withdraw'
 
     resources :items, only:[:index,:show]
+    resources :cart_items, only:[:index,:create]
   end
 
    # 管理者側のルーティング設定

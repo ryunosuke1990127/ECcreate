@@ -1,0 +1,40 @@
+<h1>ショッピングカート</h1>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+
+ <body>
+   <div class="container">
+       <div class="row">
+        <div class="mx-auto">
+          <table class="table">
+            <!--テーブルヘッダ-->
+            <thead>
+              <tr>
+                <th>商品名</th>
+                <th>単価(税込み)</th>
+                <th>数量</th>
+                <th>小計</th>
+              </tr>
+            </thead>
+            <!--テーブルの項目設定-->
+           <% @carts.each do |c| %>
+           <tbody>
+             <tr>
+               <td><div><%= c.item_id.name%></div></td>
+               <td><div><%= c.item.item.with_tax_price %></div></td>
+               <td><div><%= c.amount%></div></td>
+               <td><div><%= c.subtotal %></div></td>
+               <% end %>
+             </tr>
+           </tbody>
+           </table>
+         </div>
+       </div>
+    </div>
+ </body>
+
+ </html>
