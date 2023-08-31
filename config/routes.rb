@@ -25,9 +25,10 @@ Rails.application.routes.draw do
     patch '/customers/infomation' =>'customers#update'
     get '/customers/withdraw_check' =>'customers#withdraw_check'
     patch  '/customers/withdraw' =>'customers#withdraw'
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
 
     resources :items, only:[:index,:show]
-    resources :cart_items, only:[:index,:create]
+    resources :cart_items, only:[:index,:create,:destroy]
   end
 
    # 管理者側のルーティング設定

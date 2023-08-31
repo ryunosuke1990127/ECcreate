@@ -1,4 +1,4 @@
-<h1>ショッピングカート</h1>
+
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,6 +10,7 @@
    <div class="container">
        <div class="row">
         <div class="mx-auto">
+            <h1>ショッピングカート</h1> <%= link_to "カートを空にする",cart_items_destroy_all_path, method: :DELETE %>
           <table class="table">
             <!--テーブルヘッダ-->
             <thead>
@@ -18,20 +19,24 @@
                 <th>単価(税込み)</th>
                 <th>数量</th>
                 <th>小計</th>
+                <th>小計</th>
               </tr>
             </thead>
             <!--テーブルの項目設定-->
            <% @carts.each do |c| %>
            <tbody>
              <tr>
-               <td><div><%= c.item_id.name%></div></td>
-               <td><div><%= c.item.item.with_tax_price %></div></td>
+               <td><div><%= c.item.name%></div></td>
+               <td><div><%= c.item.with_tax_price %></div></td>
                <td><div><%= c.amount%></div></td>
                <td><div><%= c.subtotal %></div></td>
+               <% @total+=c.subtotal %>
+               <td><div><%= link_to "削除する",cart_item_path(c.id),method: :DELETE%></div></td>
                <% end %>
              </tr>
            </tbody>
            </table>
+           合計金額<%=@total%>
          </div>
        </div>
     </div>

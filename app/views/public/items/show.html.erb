@@ -19,6 +19,7 @@
           <div><%=f.select :amount, [['1',1],['2',2],['3',3]]%></div>
           <!--どの商品を買ったのかを識別-->
           <div><%= f.hidden_field :item_id, :value => @item.id%></div>
+          <div><%= f.hidden_field :customer_id, :value => current_customer.id%></div>
           <div><%= f.submit "カートに入れる",class: 'btn btn-success btn-lg '%></div>
           <% end %>
         </div>
