@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+
+ <body>
+   <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <h1>注文情報確認</h1>
+           <table class="table">
+            <!--テーブルヘッダ-->
+            <thead>
+              <tr>
+                <th>商品名</th>
+                <th>単価(税込み)</th>
+                <th>数量</th>
+                <th>小計</th>
+              </tr>
+            </thead>
+            <!--テーブルの項目設定-->
+           <% @cart.each do |c| %>
+           <tbody>
+             <tr>
+               <td><div><%= c.item.name%></div></td>
+               <td><div><%= c.item.with_tax_price %></div></td>
+               <td><div><%= c.amount%></div></td>
+               <td><div><%= c.subtotal%></div></td>
+               <% @total += c.subtotal %>
+            <% end %>
+             </tr>
+           </tbody>
+           </table>
+           <br>支払方法<%= Order.payment_methods_i18n%>
+           <br>お届け先<%=@order.address%>
+          </div>
+          <div class = "col-sm-4">
+            <table>
+             <tr>
+               <th>送料</th><td><></td>
+            　</tr>
+
+             <tr>
+               <th>商品合計</th><td><%=@total%></td>
+            　</tr>
+
+             <tr>
+               <th>請求金額</th><td><%=@total%></td>
+            </tr>
+          </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
