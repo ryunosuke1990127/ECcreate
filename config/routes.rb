@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
     resources :items, only:[:index,:show]
     resources :cart_items, only:[:index,:create,:destroy]
-    resources :orders, only:[:index,:show,:new]
+    resources :orders, only:[:index,:show,:new,:create]
   end
 
    # 管理者側のルーティング設定

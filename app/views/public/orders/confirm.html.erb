@@ -34,8 +34,13 @@
              </tr>
            </tbody>
            </table>
-           <br>支払方法<%= Order.payment_methods_i18n%>
-           <br>お届け先<%=@order.address%>
+           <br><h5>支払方法</h5>
+           <% if @payment_method =="credet" %>
+               クレジットカード
+           <% else%>
+               銀行振込
+           <% end %>
+           <br><h5>お届け先</h5><%=@order_address%>
           </div>
           <div class = "col-sm-4">
             <table>
@@ -52,8 +57,20 @@
             </tr>
           </table>
           </div>
+          <!--確定時に必要な情報を送る-->
+          <%= form_with model: @order, url: orders_path, method: :POST do |f|%>
+          <!--支払方法を送る-->
+          <%= f.hidden_field :payment_method, :value => @payment_method %>
+          <!--送り先を送る-->
+          <%= f.hidden_field :address, :value => @order.address %>
+          <%= f.hidden_field :adress_name, :value => @order.adress_name %>
+          <%= f.hidden_field :post_code, :value => @order.post_code %>
+          <%= f.hidden_field :id, :value => @order.id %>
+          <!--金額を送る-->
+          <%= f.hidden_field :total_amount, :value => @total%>
+          <%= f.submit "注文を確定する",class: 'btn btn-success btn-lg '%>
+          <% end %>
         </div>
-      </div>
     </main>
   </body>
 </html>
