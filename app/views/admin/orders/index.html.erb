@@ -1,0 +1,39 @@
+<h1>注文履歴一覧</h1>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+
+ <body>
+   <div class="container">
+       <div class="row">
+        <div class="mx-auto">
+          <table class="table">
+            <!--テーブルヘッダ-->
+            <thead>
+              <tr>
+                <th>購入日時</th>
+                <th>購入者</th>
+                <th>注文個数</th>
+
+              </tr>
+            </thead>
+            <!--テーブルの項目設定-->
+           <% @order.each do |c| %>
+           <tbody>
+             <tr>
+               <td><div><%= link_to admin_order_path(c.id) do %><%= c.updated_at%><% end %></div></td>
+               <td><div><%=c.customer.first_name%><%=c.customer.last_name%></div></td>
+               <td><div><%= c.order_products.sum(:amount) %></div></td>
+               <% end %>
+             </tr>
+           </tbody>
+           </table>
+         </div>
+       </div>
+    </div>
+ </body>
+
+ </html>

@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2023_08_28_053010) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "custmoer_id", null: false
+    t.integer "customer_id", null: false
     t.integer "total_amount", null: false
     t.integer "payment_method", null: false
     t.integer "shipping_fee", null: false

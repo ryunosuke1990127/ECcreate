@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/edit'
-    get 'customers/show'
-  end
+
     # 顧客用
   devise_for :customers, skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -39,6 +35,7 @@ Rails.application.routes.draw do
   resources :genres ,only:[:create,:update,:edit,:index]
   resources :items , only:[:create,:update,:edit,:index,:new,:show]
   resources :customers , only:[:update,:edit,:index,:show]
+  resources :orders , only:[:index,:show]
   end
 
 

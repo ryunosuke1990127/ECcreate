@@ -40,10 +40,11 @@ class Public::OrdersController < ApplicationController
     @cart =current_customer.cart_items
     # データの受け取り
     @order = Order.new(order_params)
+    @order.shipping_fee= 800
     # 注文情報のユーザー情報にログインしているユーザの情報を紐づける
-    @order.custmoer_id = current_customer.id
+    @order.customer_id = current_customer.id
     # 取得データをモデルへ保存
-    @order.save
+    @order.save!
     # 注文詳細への保存(カート内を一つずつ取得し注文詳細へ保存)
     @cart.each do |c|
       order_product = OrderProduct.new
@@ -53,8 +54,10 @@ class Public::OrdersController < ApplicationController
       order_product.item_id = c.item_id
       # 数量の紐付け
       order_product.amount = c.amount
+      order_product.unit_price = c.item.price
       order_product.save
     end
+
      # カート内の削除
      @cart.destroy_all
 
