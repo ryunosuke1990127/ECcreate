@@ -1,2 +1,53 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+
+ <body>
+   <div class="container">
+       <div class="row">
+        <div class="col-8">
+          <h1>注文履歴詳細</h1>
+            <div>購入者：      <%= @order.customer.first_name%><%= @order.customer.last_name%></div>
+            <div>注文日：      <%= @order.updated_at%></div>
+            <div>配送先：      <%= @order.address%>   <%= @order.adress_name%></div>
+            <div>支払方法：
+            <% if @order.payment_method == "creait"%>
+              クレジットカード
+            <% else %>
+              銀行振込
+            <% end %>
+            </div>
+            <table class="table">
+            <!--商品情報の作成-->
+             <thead>
+              <tr>
+                <th>商品名</th>
+                <th>単価(税込み)</th>
+                <th>数量</th>
+                <th>小計</th>
+              </tr>
+            </thead>
+           <% @order_item.each do |c| %>
+            <tbody>
+              <tr>
+                <td><%=c.item.name%></td>
+                <td><%=c.unit_price%></td>
+                <td><%=c.amount%></td>
+                <td><%=c.sabtotal%></td>
+                <% @total+=c.sabtotal %>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+         </div>
+         <div class="col-4">
+           <br>商品合計：<%=@total %>
+           <br>送料：<%= @order.shipping_fee%>
+           <br>請求金額合計：<%= @total + @order.shipping_fee%>
+       </div>
+    </div>
+ </body>
+ </html>

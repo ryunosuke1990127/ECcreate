@@ -5,6 +5,7 @@ class Public::CartItemsController < ApplicationController
     @carts = current_customer.cart_items
     # 合計金額用の変数
     @total = 0
+    
   end
 
   def create

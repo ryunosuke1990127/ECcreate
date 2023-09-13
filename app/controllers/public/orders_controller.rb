@@ -67,10 +67,17 @@ class Public::OrdersController < ApplicationController
   def complete
   end
 
+  # ログインしているユーザーの注文履歴を表示
   def index
+    # ログインしているユーザーの一覧を取得
+    @order = current_customer.orders
+    @total = 0
   end
 
   def show
+    # クリックした注文情報を取得
+    @order_details =Order.find(params[:id])
+    @total =0
   end
 
   private
