@@ -1,5 +1,25 @@
-<h1>ジャンル編集</h1>
-<%= form_with model: @genre,url: admin_genre_path, method: :PATCH do |f| %>
-<div>ジャンル名 <%=f.text_field :name%></div>
-<p><%= f.submit "編集内容を保存" %></p>
-<% end %>
+
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
+
+ <body>
+   <div class="container">
+       <div class="row">
+        <div class="mx-auto">
+          <h1>ジャンル編集</h1>
+          <%= form_with model: @genre,url: admin_genre_path, method: :PATCH do |f| %>
+          <div>ジャンル名 <%=f.text_field :name%>
+          <%= f.submit "編集内容を保存" %></div>
+          <% end %>
+         </div>
+       </div>
+    </div>
+ </body>
+ </html>
+
+

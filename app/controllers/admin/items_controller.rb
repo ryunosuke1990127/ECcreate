@@ -13,7 +13,7 @@ class Admin::ItemsController < ApplicationController
     # 新規登録の処理
     @item = Item.new(item_params)
     @item.save
-    redirect_to new_admin_item_path
+    redirect_to admin_item_path(@item.id)
   end
 
   def show

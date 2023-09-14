@@ -1,13 +1,39 @@
-<h1>ジャンル一覧・追加</h1>
-<%= form_with model: @genre,url: admin_genres_path, method: :post do |f| %>
-<div>ジャンル名 <%= f.text_field :name%></div>
-<%=f.submit '新規登録'%>
-<% end %>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  </head>
 
+ <body>
+   <div class="container">
+       <div class="row">
+        <div class="mx-auto">
+          <h1>ジャンル一覧・追加</h1>
+          <%= form_with model: @genre,url: admin_genres_path, method: :post do |f| %>
+          <div class="janre">ジャンル名 <%= f.text_field :name%><%=f.submit '新規登録'%></div>
+          <% end %>
 
-<h2>ジャンル一覧</hs>
-<% @genres.each do |g|%>
-<div>
-<%=g.name%><%=link_to '編集する' ,edit_admin_genre_path(g.id)%>
-</div>
-<% end %>
+          <table class="table">
+            <!--テーブルヘッダ-->
+            <thead>
+              <tr><th>ジャンル</th>
+                  <th></th>
+              </tr>
+            </thead>
+            <!--テーブルの項目設定-->
+           <% @genres.each do |g|%>
+           <tbody>
+             <tr>
+               <td><%=g.name%></td>
+               <td><%=link_to '編集する' ,edit_admin_genre_path(g.id)%></td>
+             </tr>
+           </tbody>
+           <% end %>
+           </table>
+         </div>
+       </div>
+    </div>
+ </body>
+ </html>
+
