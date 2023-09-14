@@ -18,7 +18,7 @@
             <div class="customer">住所<%= @customer.address %></div>
             <div class="customer">電話番号<%= @customer.telephone_number %></div>
             <div class="customer">メールアドレス<%= @customer.email %></div>
-            <div class="customer">会員ステータス<%= @customer.is_deleted ? '有効' : '退会'%></div>
+            <div class="customer">会員ステータス<%= @customer.is_deleted ? '退会' : '有効'%></div>
             <div><%= link_to "編集",edit_admin_customer_path(@customer.id)%></div>
           </div>
         </div>

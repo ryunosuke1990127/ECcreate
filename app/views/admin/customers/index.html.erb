@@ -27,7 +27,7 @@
                <td><div><%= c.id%></div></td>
                <td><div><%= link_to admin_customer_path(c.id) do %><%=c.first_name%><%=c.last_name%><% end %></div></td>
                <td><div><%= c.email%></div></td>
-               <td><div><%= c.is_deleted ? '有効' : '退会'%></div></td>
+               <td><div><%= c.is_deleted ? '退会' : '有効'%></div></td>
                <% end %>
              </tr>
            </tbody>
