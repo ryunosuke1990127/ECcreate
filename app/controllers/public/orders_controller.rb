@@ -18,6 +18,9 @@ class Public::OrdersController < ApplicationController
     # 選択した支払方法を取得
     @payment_method = params[:order][:payment_method]
 
+    # 配送料金の設定
+    @order.shipping_fee= 800
+
     # 選択したお届け先方法を取得
     address_code = params[:order][:select_address]
     if address_code == "0"
