@@ -14,7 +14,7 @@
         <div class="col-md-8 offset-md-1">
           <div><%=@item.name%></div>
           <div><%=@item.introduction%></div>
-          <div>¥<%=@item.price*1.1%>(税込み)</div>
+          <div>¥<%=@price%>(税込み)</div>
           <%= form_with model: @cart_item ,url: cart_items_path, metohd: :POST do |f|%>
           <div><%=f.select :amount, [['1',1],['2',2],['3',3]]%></div>
           <!--どの商品を買ったのかを識別-->

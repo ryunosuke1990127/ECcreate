@@ -8,16 +8,19 @@
  <body>
    <div class="container">
        <div class="row">
-        <div class="mx-auto">
+        <div class="col-sm-5">
           <h1>マイページ</h1>
-          <h4>登録情報</h4> <%=link_to "編集", customers_infomation_edit_path(@user.id) %>
-              <div>氏名　<%= @user.first_name %>　<%= @user.last_name%></div>
-              <div>カナ　<%= @user.first_name_kana %>　<%= @user.last_name_kana%></div>
-              <div>郵便番号　<%= @user.postal_code %></div>
-              <div>住所　<%= @user.address %></div>
-              <div>電話番号　<%= @user.telephone_number %></div>
-              <div>メールアドレス　<%= @user.email %></div>
-              <div>注文履歴</div> <%=link_to "一覧を見る"  ,orders_path , method: :GET %>
+          <div class="btn">登録情報 <%=link_to "編集", customers_infomation_edit_path(@user.id), class: 'btn btn-success' %></div>
+
+          <table>
+            <tr><th>氏名</th><td><%= @user.first_name %> <%= @user.last_name%></td></tr>
+            <tr><th>カナ</th><td><%= @user.first_name_kana %>　<%= @user.last_name_kana%></td></tr>
+            <tr><th>郵便番号</th><td><%= @user.postal_code %></td></tr>
+            <tr><th>住所</th><td><%= @user.address %></td></tr>
+            <tr><th>電話番号</th><td><%= @user.telephone_number %></td></tr>
+            <tr><th>メールアドレス</th><td><%= @user.email %></td></tr>
+          </table>
+              <div class="btn">注文履歴 <%=link_to "一覧を見る"  ,orders_path , method: :GET, class: 'btn btn-primary' %> </div>
          </div>
       </div>
     </div>
