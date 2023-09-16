@@ -27,13 +27,13 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_deleted: true)
     # セッションを消してTop画面へリダイレクト
     reset_session
-    redirect_to admin_path
+    redirect_to root_path
   end
 
 
   private
 
   def user_params
-    params.require(:customer).permit(:last_name, :first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number)
+    params.require(:customer).permit(:last_name, :first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number,:email)
   end
 end

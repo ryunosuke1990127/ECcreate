@@ -9,12 +9,11 @@
 
     <div class="form-group row my-3">
     <label class="col-sm-5">会員の方はこちらからログイン</label>
-    <label class="col-sm-2"></label>
     </div>
 
    <div class="form-group row my-3">
     <label class="col-sm-4"> <%= f.label :email %></label>
-    <label class="col-sm-2"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></label>
+    <label class="col-sm-2"><%= f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder: "sample@example.com"%></label>
 </div>
 
 <div class="form-group row my-3">
@@ -25,13 +24,19 @@
 <div class="actions">
 <div class="form-group row my-3">
     <label class="col-sm-4"></label>
-    <label class="col-sm-2"><%= f.submit "ログイン" %></label>
+    <label class="col-sm-2"><%= f.submit "ログイン" ,class: 'btn-primary btn-lg'%></label>
 </div>
 </div>
 <% end %>
 
 
 <div class="form-group row my-3">
-    <label class="col-sm-5">会員登録がお済みでない方<%= render "public/shared/links" %></label>
+    <label class="col-sm-5">会員登録がお済みでない方</label>
+</div>
+
+<div class="form-group row my-3"></div>
+    <label class="col-sm-6">
+      <%= link_to "こちら" ,new_customer_registration_path %>から新規登録を行なってください
+    </label>
 </div>
 </form>
