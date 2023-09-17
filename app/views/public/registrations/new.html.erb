@@ -36,10 +36,10 @@
                     (メイ)<%= f.text_field :last_name_kana, autofocus: true, placeholder: "ミチコ" %>
                    </label>
                 </div>
-                
+
               <div class="form-group row my-3">
                 <label class="col-sm-4">メールアドレス</label>
-                　<label class="col-sm-2"><%= f.email_field :email, autofocus: true,placeholder: "sample@example.com" %> </label>
+                　<label class="col-sm-2"><%= f.email_field :email, autofocus: true,placeholder: "sample@example.com" ,size:30%> </label>
               </div>
 
                 <div class="form-group row my-3">
@@ -49,7 +49,7 @@
 
                 <div class="form-group row my-3">
                   <label class="col-sm-4">住所</label>
-                    <label class="col-sm-2"><%= f.text_field :address,size: 30 , autofocus: true,placeholder: "東京都渋谷区代々木神園町0-0" %></label>
+                    <label class="col-sm-2"><%= f.text_field :address,size: 30 , autofocus: true,placeholder: "東京都渋谷区代々木神園町0-0",size:30 %></label>
               </div>
 
                 <div class="form-group row my-3">
@@ -71,12 +71,13 @@
               </div>
 
               <div class="form-group row my-3">
-                <label class="col-sm-4"><%= f.submit "新規登録"%></label>
+                <label class="col-sm-4"><%= f.submit "新規登録", class: 'btn btn-success'%></label>
               </div>
             <% end %>
 
              <div class="form-group row my-3">
-                <label class="col-sm-4">すでに登録済みの方はこちら<br><%= render "public/shared/links" %></label>
+                <label class="col-sm-4">すでに登録済みの方はこちら</label>
+                <br><%= link_to"ログイン",new_customer_session_path  %>
             </div>
           </form>
       </body>

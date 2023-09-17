@@ -18,7 +18,7 @@
                 <th>単価(税込み)</th>
                 <th>数量</th>
                 <th>小計</th>
-                <th>小計</th>
+                <th></th>
               </tr>
             </thead>
             <!--テーブルの項目設定-->
@@ -27,7 +27,13 @@
              <tr>
                <td><div><%= c.item.name%></div></td>
                <td><div><%= c.item.with_tax_price %></div></td>
-               <td><div><%= c.amount%></div></td>
+               <!--数量変更-->
+               <td><%= c.amount%><%= form_with  model: @cart ,url: cart_items_path, metohd: :POST do |cart| %>
+               <div><%= cart.hidden_field :item_id, :value => c.item_id%></div>
+               <div><%= cart.hidden_field :customer_id, :value => current_customer.id%></div>
+               <%= cart.select :amount, [*1..100]%> <%= cart.submit "変更",class: 'btn btn-success'%>
+               <% end %>
+               </td>
                <td><div><%= c.subtotal %></div></td>
                <% @total+=c.subtotal %>
                <td><div><%= link_to "削除する",cart_item_path(c.id),method: :DELETE%></div></td>

@@ -1,6 +1,8 @@
 class Public::CartItemsController < ApplicationController
 
   def index
+    # 数量変更のフォームを入れるためフォーム用の空のインスタンスをセット
+    @cart = CartItem.new
     # 今ログインしているユーザーのカート情報
     @carts = current_customer.cart_items
     # 合計金額用の変数

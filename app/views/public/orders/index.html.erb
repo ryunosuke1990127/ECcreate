@@ -25,7 +25,7 @@
            <% @order.each do |order| %>
            <tbody>
              <tr>
-               <td><div><%= order.updated_at%></div></td>
+               <td><div><%= order.updated_at.to_s(:datetime_jp)%></div></td>
                <td><div><%= order.address %></div></td>
                <!--itemテーブルより商品名を取得すrため再度eachで取得-->
                <td>

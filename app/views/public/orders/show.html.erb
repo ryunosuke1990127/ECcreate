@@ -10,7 +10,7 @@
        <div class="row">
         <div class="col-8">
           <h1>注文履歴詳細</h1>
-            <div>注文日：      <%= @order_details.updated_at%></div>
+            <div>注文日：      <%= @order_details.updated_at.to_s(:datetime_jp)%></div>
             <div>配送先：      <%= @order_details.address%>   <%=@order_details.adress_name%></div>
             <div>支払方法：
             <% if @order_details.payment_method == "creait"%>
@@ -33,7 +33,7 @@
             <tbody>
               <tr>
                 <td><%=c.item.name%></td>
-                <td><%= c.unit_price * 1.1%></td>
+                <td><%= c.item.with_tax_price %></td>
                 <td><%=c.amount%></td>
                 <td><%=c.sabtotal%></td>
                 <% @total+=c.sabtotal %>

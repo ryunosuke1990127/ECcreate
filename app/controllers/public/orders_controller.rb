@@ -32,6 +32,9 @@ class Public::OrdersController < ApplicationController
     elsif address_code == "1"
        # 新しい配送先を設定
         @order_address=params[:order][:post_code] + params[:order][:address] + params[:order][:adress_name]
+        @order.post_code=params[:order][:post_code]
+        @order.address = params[:order][:address]
+        @order.adress_name = params[:order][:adress_name]
     else
       render :new
     end
