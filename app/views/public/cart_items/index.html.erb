@@ -42,7 +42,7 @@
            </tbody>
            </table>
            <div class="right">合計金額:<%=@total%></div>
-           <div class="left"><%= link_to "買い物を続ける",root_path ,class: 'btn btn-primary' %></div>
+           <div class="left"><%= link_to "買い物を続ける",items_path ,class: 'btn btn-primary' %></div>
            <!--カート内が空の場合以外のみ表示-->
             <% if @carts.blank?%>
             <% else %>
